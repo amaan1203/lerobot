@@ -40,9 +40,8 @@ def apply_rope(x, positions, max_wavelength=10_000):
 
     radians = radians[..., None, :]
 
-    sin = torch.sin(radians)  # .to(dtype=dtype)
-    cos = torch.cos(radians)  # .to(dtype=dtype)
-
+    sin = torch.sin(radians)  
+    cos = torch.cos(radians)  
     x1, x2 = x.split(d_half, dim=-1)
     res = torch.empty_like(x)
     res[..., :d_half] = x1 * cos - x2 * sin
